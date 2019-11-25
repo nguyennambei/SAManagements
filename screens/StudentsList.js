@@ -9,8 +9,8 @@ export default class StudentsList extends React.Component{
     }
     render(){
     return(
-            <ImageBackground source={require('../assets/BG.png')} style={{width:'100%',height:'100%'}}>
-            <Text>Inside</Text>
+        <ImageBackground source={require('../assets/BG.png')} style={{width:'100%',height:'100%'}}>
+            <Text>Indside</Text>
         </ImageBackground>
     );
     }
