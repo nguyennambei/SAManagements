@@ -11,17 +11,19 @@ export default class PeriodSelecte extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            periods:[{stt:1},{stt:2},{stt:3},{stt:4}]
+            periods:[{stt:1},{stt:2},{stt:3},{stt:4}],
+            date: 12,
         };
     }
     render(){
+       
         return(
             <ImageBackground source={require('../assets/BG.png')} style={{width:'100%',height:'100%'}}>
             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
                 <Text h1 style={{fontWeight:'800',color:'#2E6392'}}>2年生</Text>
                 <View style={{flexDirection:'row', alignItems:'center',marginTop:50}}>
                     <Icon name='calendar-check-o' size={30}/>
-                    <Text h4 style={{marginRight:50}}>2019-11-20</Text>
+                    <Text h4 style={{marginRight:50}}>{this.state.date}</Text>
                     <Text h4>水曜日</Text>
                 </View>
             </View>
@@ -44,6 +46,14 @@ export default class PeriodSelecte extends React.Component{
             </View>
             </ImageBackground>
     );
+    }
+    componentDidMount(){
+        let date = new Date();
+        let d = date.getDate();
+        let m = date.getMonth()+1;
+        let y = date.getFullYear()  ;
+        date =  y + '-'+m+'-'+d;
+        this.setState({date});
     }
 }
 
