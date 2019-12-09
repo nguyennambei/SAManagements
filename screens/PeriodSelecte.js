@@ -12,7 +12,8 @@ export default class PeriodSelecte extends React.Component{
         super(props);
         this.state={
             periods:[{stt:1},{stt:2},{stt:3},{stt:4}],
-            date: 12,
+            date: null,
+            today: null
         };
     }
     render(){
@@ -24,7 +25,7 @@ export default class PeriodSelecte extends React.Component{
                 <View style={{flexDirection:'row', alignItems:'center',marginTop:50}}>
                     <Icon name='calendar-check-o' size={30}/>
                     <Text h4 style={{marginRight:50}}>{this.state.date}</Text>
-                    <Text h4>水曜日</Text>
+                    <Text h4>{this.state.today}</Text>
                 </View>
             </View>
             <View style={{flex:2}}>
@@ -49,11 +50,16 @@ export default class PeriodSelecte extends React.Component{
     }
     componentDidMount(){
         let date = new Date();
+        const day = ['月','火','水','木','金','土','日'];
+        let today = day[date.getDay()-1]+'曜日';
         let d = date.getDate();
+        d= d<=9 ? '0'+d : d;
         let m = date.getMonth()+1;
+        m= m<=9 ? '0'+m : m;
         let y = date.getFullYear()  ;
         date =  y + '-'+m+'-'+d;
-        this.setState({date});
+        this.setState({date,today});
+
     }
 }
 
